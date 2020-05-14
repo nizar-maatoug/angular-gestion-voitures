@@ -1,0 +1,14 @@
+<div class="row ml-2 mt-2">
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click)="onNewVoiture()" *ngIf="islogedd">nouvelle voiture</button>
+  </div>
+</div>
+<hr>
+<div class="row ml-2 mt-2">
+  <div class="col-md-12">
+    <app-voiture-item
+      *ngFor="let voitureEl of voitures"
+      [voiture]="voitureEl"
+    ></app-voiture-item>
+  </div>
+</div>

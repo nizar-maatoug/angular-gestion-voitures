@@ -1,0 +1,15 @@
+
+  <div class="card mt-5" style="width: 50%;" *ngIf="voiture">
+    <img class="card-img-top mx-auto d-block"
+     [src]="voiture.photo"
+     [alt]="voiture.marque"
+     style="width: 250px;height: 250px;">
+    <div class="card-body">
+      <h5 class="card-title">{{voiture.marque}} {{voiture.modele}}</h5>
+      <p class="card-text">couleur: {{voiture.couleur}}</p>
+      <button class="btn btn-primary" (click)="onEditVoiture(voiture.id)" *ngIf="isLogged">Modifier</button>
+      <button type="button" class="btn btn-danger" (click)="onSupprimer()" *ngIf="isLogged">Supprimer</button>
+    </div>
+  </div>
+
+

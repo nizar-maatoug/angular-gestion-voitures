@@ -1,0 +1,59 @@
+<div class="container" *ngIf="voiture">
+  <form #voitureForm="ngForm" (ngSubmit)="onAjoutVoiture(voitureForm)">
+
+    <div class="form-group">
+      <label>Marque</label>
+      <input type="text" class="form-control"
+      required
+      #inputMarque="ngModel"
+      [class.is-invalid]="inputMarque.invalid && inputMarque.touched"
+      name="marque"
+      [(ngModel)]="voiture.marque">
+      <small class="text-danger" *ngIf="inputMarque.invalid && inputMarque.touched">
+        La marque de la voiture est obligatoire
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label>Modèle</label>
+      <input type="text" class="form-control"
+      required
+      #inputModele="ngModel"
+      [class.is-invalid]="inputModele.invalid && inputModele.touched"
+      name="modele"
+      [(ngModel)]="voiture.modele">
+      <small class="text-danger" *ngIf="inputModele.invalid && inputModele.touched">
+        Le modèle de la voiture est obligatoire
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label for="couleur">Couleur</label>
+      <select class="form-control" id="couleur"
+              required
+              [(ngModel)]="voiture.couleur"
+              name="couleur"
+              #couleur="ngModel">
+        <option *ngFor="let c of couleurs" [value]="c">{{c}}</option>
+      </select>
+      <small [hidden]="couleur.valid || couleur.pristine" class="text-danger">
+        la couleur de la voiture est obligatoire
+      </small>
+    </div>
+
+    <div class="form-group">
+      <label>Photo</label>
+      <input type="text" class="form-control"
+      #inputphoto="ngModel"
+      [class.is-invalid]="inputphoto.invalid && inputphoto.touched"
+      name="photo"
+      [(ngModel)]="voiture.photo">
+
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!voitureForm.form.valid">Valider</button>
+    <button type="button" class="btn btn-danger" (click)="onCancel()">Annuler</button>
+
+  </form>
+
+</div>
